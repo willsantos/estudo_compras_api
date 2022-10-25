@@ -21,4 +21,10 @@ public class ShopListService
     {
         return await _repository.ListAsync();
     }
+
+    public async Task<ShopList> Show(int shopListId)
+    {
+        
+        return await _repository.FindAsync(shopListId);
+    }
 }

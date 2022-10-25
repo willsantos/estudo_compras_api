@@ -15,16 +15,21 @@ public class ShopListController : ControllerBase
         _service = service;
     }
     
-    [HttpGet(Name = "QUENAMEEHESSE")]
-    public async Task<IEnumerable<ShopList>> Get()
+    [HttpGet]
+    public async Task<IEnumerable<ShopList>> Index()
     {
         return await _service.List();
     }
     
+    [HttpGet("id")]
+    public async Task<ShopList> Show(int id)
+    {
+        return await _service.Show(id);
+    }
     
 
     [HttpPost]
-    public async Task<IActionResult> post([FromBody] ShopList shopList)
+    public async Task<IActionResult> Create([FromBody] ShopList shopList)
     {
         try
         {
