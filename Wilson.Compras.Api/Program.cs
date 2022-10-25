@@ -1,11 +1,19 @@
+using Wilson.Compras.Api.Data;
+using Wilson.Compras.Api.Repositories;
+using Wilson.Compras.Api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ShopListService, ShopListService>();
+builder.Services.AddScoped<ShopListRepository, ShopListRepository>();
 
+builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
